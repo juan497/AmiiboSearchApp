@@ -2,12 +2,15 @@
     "name": "amiibo-search-api",
     "version": "1.0.0",
     "description": "a model to wrap the Nintendo Amiibo's API",
-    "main": "api.js",
+    "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Juan Hernandez",
     "license": "ISC",
+    "engines" : { 
+      "node" : ">=14.20.1"
+    },
     "dependencies": {
       "superagent": "^8.0.9",
       "express": "^4.18.2",
