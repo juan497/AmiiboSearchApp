@@ -1,25 +1,7 @@
 /* eslint-disable no-undef */
+const base_url = "https://amiibo-search-ap.onrender.com";
 const { createApp } = Vue;
 
-const fun = async() => {
-    //this is to dynamically load the search names from api
-    const set = new Set();
-    set.add("hi");
-    set.add("zi");
-    set.add("ai");
-
-    //const response = await fetch("https://amiiboapi.com/api/character/");
-    //console.log(response.json());
- 
-    
-    //console.log(set);
-    const arr = Array.from(set);
-    arr.sort();
-    console.log(arr);
-
-    return arr
-
-};
 
 createApp({
     data() {
@@ -48,7 +30,7 @@ createApp({
 
 
             if (this.search_mode === false){
-                const response = await fetch(`http://localhost:8888/history`);
+                const response = await fetch(`${base_url}/history`);
 
                 const history = await response.json();
                 this.history = history;
@@ -61,7 +43,7 @@ createApp({
         search_by: async function () {
             this.searchTermLocked = this.searchTerm.toLowerCase();
 
-            const response = await fetch(`http://localhost:8888/search/${this.picked}?keyword=${this.searchTermLocked}`);
+            const response = await fetch(`${base_url}/search/${this.picked}?keyword=${this.searchTermLocked}`);
             const amiibos = await response.json();
             this.amiibos = amiibos.results;
             console.log(this.amiibos);
@@ -74,7 +56,7 @@ createApp({
             console.log(amiibo.id);
 
             const response = await fetch(
-                `http://localhost:8888/search/${amiibo.id}/details?keyword=${this.searchTermLocked}`
+                `${base_url}/search/${amiibo.id}/details?keyword=${this.searchTermLocked}`
             );
             const details = await response.json();
             console.log(details);
@@ -85,7 +67,7 @@ createApp({
         },
 
         get_history: async function (amiibo) {
-            const response = await fetch(`http://localhost:8888/history`);
+            const response = await fetch(`${base_url}/history`);
             const history = await response.json();
             this.history = history;
             console.log(history);

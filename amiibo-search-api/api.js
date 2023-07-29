@@ -8,7 +8,7 @@ https://amiiboapi.com
  an Amiibo is a Nintendo figure
 
  */
- const superagent = require('superagent');
+ const superagent = require('../superagent');
 
 
 

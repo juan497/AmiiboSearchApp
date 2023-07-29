@@ -4,15 +4,21 @@ const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => res.type('html').send(html));
 
-app.get("/test", (req, res) => res.type('html').send(test));
+//app.get("/test", (req, res) => res.type('html').send(test));
 
-// const search = require('./routes/search.js');
-// const history = require('./routes/history.js');
-// server.use('/search', search);
+const search = require('../amiibo-search-application/routes/search.js');
+const history = require('../amiibo-search-application/routes/history.js');
+const mongo = require("../amiibo-search-application/db/index.js");
 
-// server.use('/history', history);
+server.use('/search', search);
 
-const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+server.use('/history', history);
+
+const server = app.listen(port,async () =>{
+
+ console.log(`Example app listening on port ${port}!`);
+ await mongo.connect();
+});
 
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
