@@ -13,9 +13,9 @@ const mongo = require("./amiibo-search-application/db/index.js");
 
 
 
-server.use('/search', search);
+app.use('/search', search);
 
-server.use('/history', history);
+app.use('/history', history);
 
 const server = app.listen(port,async () =>{
 
