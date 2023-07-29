@@ -24,13 +24,13 @@ createApp({
 
 
         change_button_mode: async function () {
-            console.log(this.balls);
+            //console.log(this.balls);
             this.search_mode = ! this.search_mode;
             this.button_mode = this.button_mode === "show history" ? "search" : "show history";
 
 
             if (this.search_mode === false){
-                const response = await fetch(`${base_url}/history`);
+                const response = await fetch(base_url + "/history");
 
                 const history = await response.json();
                 this.history = history;
@@ -43,7 +43,7 @@ createApp({
         search_by: async function () {
             this.searchTermLocked = this.searchTerm.toLowerCase();
 
-            const response = await fetch(`${base_url}/search/${this.picked}?keyword=${this.searchTermLocked}`);
+            const response = await fetch(base_url + "/search/" + this.picked + "?keyword=" + this.searchTermLocked);
             const amiibos = await response.json();
             this.amiibos = amiibos.results;
             console.log(this.amiibos);
@@ -55,9 +55,7 @@ createApp({
             this.details_on = true;
             console.log(amiibo.id);
 
-            const response = await fetch(
-                `${base_url}/search/${amiibo.id}/details?keyword=${this.searchTermLocked}`
-            );
+            const response = await fetch(base_url+"/search/"+amiibo.id+"/details?keyword="+this.searchTermLocked);
             const details = await response.json();
             console.log(details);
             this.details = details;
@@ -67,7 +65,7 @@ createApp({
         },
 
         get_history: async function (amiibo) {
-            const response = await fetch(`${base_url}/history`);
+            const response = await fetch(base_url + "/history");
             const history = await response.json();
             this.history = history;
             console.log(history);
