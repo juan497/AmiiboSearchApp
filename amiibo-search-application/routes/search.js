@@ -4,10 +4,10 @@
 
 
 
-const router = require('../express').Router();
+const router = require('express').Router();
 
 const database = require('../db');
-const search_api = require('amiibo-search-api');
+const search_api = require('../../amiibo-search-api');
 
 
 
