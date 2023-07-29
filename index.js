@@ -6,9 +6,9 @@ app.get("/", (req, res) => res.type('html').send(html));
 
 //app.get("/test", (req, res) => res.type('html').send(test));
 
-const search = require('../amiibo-search-application/routes/search.js');
-const history = require('../amiibo-search-application/routes/history.js');
-const mongo = require("../amiibo-search-application/db/index.js");
+const search = require('amiibo-search-application/routes/search.js');
+const history = require('amiibo-search-application/routes/history.js');
+const mongo = require("amiibo-search-application/db/index.js");
 
 server.use('/search', search);
 
