@@ -4,6 +4,13 @@ const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => res.type('html').send(html));
 
+// const search = require('./routes/search.js');
+// const history = require('./routes/history.js');
+
+// server.use('/search', search);
+
+// server.use('/history', history);
+
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 server.keepAliveTimeout = 120 * 1000;
@@ -59,3 +66,6 @@ const html = `
   </body>
 </html>
 `
+
+
+
